@@ -7,8 +7,11 @@ RUN a2enmod rewrite
 # Install necessary PHP extensions
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Copy application source code to the Apache document root
-COPY src/ /var/www/html/
+# Install Git
+RUN apt-get update && apt-get install -y git
+
+# Clone the repository
+RUN git clone https://github.com/nisleime/candelaria.git /var/www/html
 
 # Set permissions for the Apache document root
 RUN chown -R www-data:www-data /var/www/html
