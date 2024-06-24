@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+    environment:
+      MYSQL_HOST: 172.20.0.4
+      MYSQL_DATABASE: connect-mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Ncm@647534
